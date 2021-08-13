@@ -7,7 +7,7 @@ import "changkun.de/x/generics"
 ```
 
 ```
-go test -gcflags=-G=3 ./...
+go test -gcflags=-G=3 ./... -count=1 -v
 ```
 
 From Go team:

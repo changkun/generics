@@ -1,11 +1,9 @@
-package maps_test
+package maps
 
 import (
 	"reflect"
 	"strings"
 	"testing"
-
-	"changkun.de/x/generics/maps"
 )
 
 func TestKeys(t *testing.T) {
@@ -20,7 +18,7 @@ func TestKeys(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := maps.Keys(tt.m)
+		got := Keys(tt.m)
 		if !reflect.DeepEqual(got, tt.want) {
 			t.Fatalf("unexpected Keys, want %v got %v", tt.want, got)
 		}
@@ -39,7 +37,7 @@ func TestValues(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := maps.Values(tt.m)
+		got := Values(tt.m)
 		if !reflect.DeepEqual(got, tt.want) {
 			t.Fatalf("unexpected Values, want %v got %v", tt.want, got)
 		}
@@ -60,14 +58,14 @@ func TestEqual(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := maps.Equal(tt.m1, tt.m2)
+		got := Equal(tt.m1, tt.m2)
 		if !reflect.DeepEqual(got, tt.want) {
 			t.Fatalf("unexpected Equal, want %v got %v", tt.want, got)
 		}
 	}
 
 	for _, tt := range tests {
-		got := maps.EqualFunc(tt.m1, tt.m2, func(v1, v2 string) bool {
+		got := EqualFunc(tt.m1, tt.m2, func(v1, v2 string) bool {
 			return strings.Compare(v1, v2) == 0
 		})
 		if !reflect.DeepEqual(got, tt.want) {
@@ -88,7 +86,7 @@ func TestClear(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		maps.Clear(tt.m)
+		Clear(tt.m)
 		if !reflect.DeepEqual(tt.m, tt.want) {
 			t.Fatalf("unexpected Clear, want %v got %v", tt.want, tt.m)
 		}
@@ -105,7 +103,7 @@ func TestClone(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		got := maps.Clone(tt.m)
+		got := Clone(tt.m)
 		if !reflect.DeepEqual(tt.m, got) {
 			t.Fatalf("unexpected Clone, want %v got %v", tt.m, got)
 		}
@@ -126,7 +124,7 @@ func TestAdd(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		maps.Add(tt.dst, tt.src)
+		Add(tt.dst, tt.src)
 		if !reflect.DeepEqual(tt.dst, tt.want) {
 			t.Fatalf("unexpected Clone, want %v got %v", tt.want, tt.dst)
 		}
@@ -145,7 +143,7 @@ func TestFilter(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		maps.Filter(tt.m, func(k, v string) bool {
+		Filter(tt.m, func(k, v string) bool {
 			if k == "a" {
 				return true
 			}
