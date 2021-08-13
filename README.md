@@ -1,19 +1,30 @@
 # generics
 
-This package shows an implementation outlook of proposed generics APIs
+This package shows an implementation outlook of proposed generics APIs.
 
 ```go
 import "changkun.de/x/generics"
 ```
 
-Related issues: 
+```
+go test -gcflags=-G=3 ./...
+```
 
-- [golang/go#45458](https://golang.org/issue/45458)
-- [golang/go#47319](https://golang.org/issue/47319)
-- [golang/go#45955](https://golang.org/issue/45955)
-- [golang/go#47203](https://golang.org/issue/47203)
-- [golang/go#47331](https://golang.org/issue/47331)
-- [golang/go#47330](https://golang.org/issue/47330)
+From Go team:
+
+- [golang/go#45458](https://golang.org/issue/45458) proposal: constraints: new package to define standard type parameter constraints
+- [golang/go#47319](https://golang.org/issue/47319) proposal: constraints: new package to define standard type parameter constraints (discussion)
+- [golang/go#45955](https://golang.org/issue/45955) proposal: slices: new package to provide generic slice functions
+- [golang/go#47203](https://golang.org/issue/47203) proposal: slices: new package to provide generic slice functions (discussion)
+- [golang/go#47331](https://golang.org/issue/47331) proposal: container/set: new package to provide a generic set type (discussion)
+- [golang/go#47649](https://golang.org/issue/47649) proposal: maps: new package to provide generic map functions
+- [golang/go#47330](https://golang.org/issue/47330) proposal: maps: new package to provide generic map functions (discussion)
+- [golang/go#47657](https://golang.org/issue/47657) proposal: sync, sync/atomic: add PoolOf, MapOf, ValueOf
+
+From community:
+
+- [golang/go#47632](https://golang.org/issue/47632) proposal: container/heap: add Heap, a heap backed by a slice
+- [golang/go#47619](https://golang.org/issue/47619) proposal: generic functions in the sort package
 
 ## `constraints`
 
@@ -27,7 +38,9 @@ type Integer interface { ... }
 type Float interface { ... }
 type Complex interface { ... }
 type Ordered interface { ... }
-type Slice[Elem any] interface { []Elem }
+type Slice[Elem any] interface { ... }
+type Map[K, V any] interface { ... }
+type Chan[T any] interface { ... }
 ```
 
 ## `slices`

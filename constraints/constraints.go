@@ -36,6 +36,10 @@ type Ordered interface {
 }
 
 // Slice is a constraint that permits any slice.
-type Slice[T any] interface {
-	[]T
-}
+type Slice[T any] interface { ~[]T }
+
+// Map is a constraint that permits any map.
+type Map[K comparable, V any] interface { ~map[K]V }
+
+// Chan is a constraint that permits any channel.
+type Chan[T any] interface { ~chan T }
