@@ -1,4 +1,4 @@
-# generics
+# Deprecated! See [golang-design/go2generics](https://github.com/golang-design/go2generics).
 
 This package shows an implementation outlook of proposed generics APIs.
 
