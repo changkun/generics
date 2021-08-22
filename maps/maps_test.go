@@ -9,17 +9,17 @@ import (
 func TestKeys(t *testing.T) {
 	tests := []struct {
 		m    map[string]string
-		want []string
+		want [][]string
 	}{
 		{
 			m:    map[string]string{"a": "b", "c": "d"},
-			want: []string{"a", "c"},
+			want: [][]string{[]string{"a", "c"}, []string{"c", "a"}},
 		},
 	}
 
 	for _, tt := range tests {
 		got := Keys(tt.m)
-		if !reflect.DeepEqual(got, tt.want) {
+		if !reflect.DeepEqual(got, tt.want[0]) && !reflect.DeepEqual(got, tt.want[1]) {
 			t.Fatalf("unexpected Keys, want %v got %v", tt.want, got)
 		}
 	}
@@ -28,17 +28,17 @@ func TestKeys(t *testing.T) {
 func TestValues(t *testing.T) {
 	tests := []struct {
 		m    map[string]string
-		want []string
+		want [][]string
 	}{
 		{
 			m:    map[string]string{"a": "b", "c": "d"},
-			want: []string{"b", "d"},
+			want: [][]string{[]string{"b", "d"}, []string{"d", "b"}},
 		},
 	}
 
 	for _, tt := range tests {
 		got := Values(tt.m)
-		if !reflect.DeepEqual(got, tt.want) {
+		if !reflect.DeepEqual(got, tt.want[0]) && !reflect.DeepEqual(got, tt.want[1]) {
 			t.Fatalf("unexpected Values, want %v got %v", tt.want, got)
 		}
 	}
